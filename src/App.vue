@@ -1,16 +1,22 @@
 <template>
   <div id="app">
     <Header />
+    <div class="team-container">
+      <Team />
+      <Team />
+    </div>
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import Team from "./components/Team.vue";
 
 export default {
   name: "app",
   components: {
-    Header
+    Header,
+    Team
   }
 };
 </script>
@@ -26,5 +32,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 </style>
