@@ -1,7 +1,9 @@
 <template>
   <div>
-    <h1>{{ teamName }}</h1>
-    <p>Update Team Name</p>
+    <h1>{{ newTeamName }}</h1>
+    <label for="update-team-name">Update Team Name</label>
+    <br />
+    <input name="update-team-name" v-model="newTeamName" />
     <p>{{ teamScore }}</p>
     <button @click="addPoint">Add Point</button>
     <button @click="subtractPoint">Subtract Point</button>
@@ -16,7 +18,8 @@ export default {
   },
   data() {
     return {
-      teamScore: 0
+      teamScore: 0,
+      newTeamName: this.teamName
     };
   },
   methods: {
@@ -30,5 +33,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
