@@ -1,18 +1,18 @@
 <template>
   <div>
     <h1>{{ newTeamName }}</h1>
-    <label for="update-team-name">Update Team Name</label>
-    <br />
-    <input name="update-team-name" v-model="newTeamName" />
+    <b-form-group label-for="update-team-name" label="Update Team Name">
+      <b-form-input name="update-team-name" v-model="newTeamName" />
+    </b-form-group>
     <p>{{ teamScore }}</p>
-    <button @click="addPoint">Add Point</button>
-    <button @click="subtractPoint">Subtract Point</button>
+    <b-button variant="success" @click="addPoint">Add Point</b-button>
+    <b-button variant="danger" @click="subtractPoint">Subtract Point</b-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Team",
+  name: 'Team',
   props: {
     teamName: String
   },
@@ -20,18 +20,17 @@ export default {
     return {
       teamScore: 0,
       newTeamName: this.teamName
-    };
+    }
   },
   methods: {
     addPoint() {
-      this.teamScore++;
+      this.teamScore++
     },
     subtractPoint() {
-      this.teamScore--;
+      this.teamScore--
     }
   }
-};
+}
 </script>
 
-<style scoped>
-</style>
+<style></style>
