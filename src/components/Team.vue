@@ -2,9 +2,9 @@
   <div>
     <h1>{{ teamName }}</h1>
     <p>Update Team Name</p>
-    <p>Team Score</p>
-    <button>Add One</button>
-    <button>Subtract One</button>
+    <p>{{ teamScore }}</p>
+    <button @click="addPoint">Add Point</button>
+    <button @click="subtractPoint">Subtract Point</button>
   </div>
 </template>
 
@@ -13,6 +13,19 @@ export default {
   name: "Team",
   props: {
     teamName: String
+  },
+  data() {
+    return {
+      teamScore: 0
+    };
+  },
+  methods: {
+    addPoint() {
+      this.teamScore++;
+    },
+    subtractPoint() {
+      this.teamScore--;
+    }
   }
 };
 </script>
