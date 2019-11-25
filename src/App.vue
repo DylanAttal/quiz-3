@@ -6,7 +6,11 @@
       <Team
         v-for="(team, index) in this.teams"
         :key="index"
+        :index="index"
         :teamName="team.teamName"
+        :score="team.score"
+        :addPoint="addPoint"
+        :subtractPoint="subtractPoint"
       />
     </div>
     <br />
@@ -20,8 +24,8 @@
         >
       </div>
     </div>
-    <Winner />
-    <div class="modal-overlay"></div>
+    <Winner v-show="isWinnerModalVisible" />
+    <div class="modal-overlay" v-show="isWinnerModalVisible"></div>
   </div>
 </template>
 
@@ -41,13 +45,20 @@ export default {
     return {
       teams: [
         {
-          teamName: 'Gators'
+          teamName: 'Gators',
+          score: 0
         },
         {
-          teamName: 'Seminoles'
+          teamName: 'Seminoles',
+          score: 0
         }
       ],
       newTeam: ''
+    }
+  },
+  computed: {
+    isWinnerModalVisible() {
+      return this.teams.some(team => team.score > 7)
     }
   },
   methods: {
@@ -57,6 +68,12 @@ export default {
       }
       this.teams.push(team)
       this.newTeam = ''
+    },
+    addPoint(index) {
+      this.teams[index].score++
+    },
+    subtractPoint(index) {
+      this.teams[index].score--
     }
   }
 }
