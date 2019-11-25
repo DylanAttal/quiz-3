@@ -4,6 +4,11 @@
     <div class="team-container">
       <Team v-for="(team, index) in this.teams" :key="index" :teamName="team.teamName" />
     </div>
+    <div class="new-team">
+      <h2>Add New Team</h2>
+      <input type="text" v-model="newTeam" />
+      <button @click="createNewTeam">Create New Team</button>
+    </div>
   </div>
 </template>
 
@@ -26,8 +31,18 @@ export default {
         {
           teamName: "Seminoles"
         }
-      ]
+      ],
+      newTeam: ""
     };
+  },
+  methods: {
+    createNewTeam() {
+      const team = {
+        teamName: this.newTeam
+      };
+      this.teams.push(team);
+      this.newTeam = "";
+    }
   }
 };
 </script>
@@ -35,6 +50,7 @@ export default {
 <style>
 body {
   margin: 0;
+  background-color: #fa4616;
 }
 
 #app {
@@ -42,7 +58,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
 }
 
 .team-container {

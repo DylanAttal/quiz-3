@@ -6,7 +6,7 @@
 
 <style scoped>
 div {
-  background-color: #eee;
+  background-color: #0021a5;
 }
 
 h1 {
