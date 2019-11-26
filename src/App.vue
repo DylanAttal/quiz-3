@@ -24,7 +24,11 @@
         >
       </div>
     </div>
-    <Winner v-show="isWinnerModalVisible" />
+    <Winner
+      v-show="isWinnerModalVisible"
+      :resetGame="resetGame"
+      :winningTeamName="winningTeamName"
+    />
     <div class="modal-overlay" v-show="isWinnerModalVisible"></div>
   </div>
 </template>
@@ -59,12 +63,20 @@ export default {
   computed: {
     isWinnerModalVisible() {
       return this.teams.some(team => team.score > 7)
+    },
+    winningTeamName() {
+      let highestScore = 0
+      this.teams.forEach(team =>
+        team.score > highestScore ? (highestScore = team.score) : highestScore
+      )
+      return this.teams.find(team => team.score === highestScore).teamName
     }
   },
   methods: {
     createNewTeam() {
       const team = {
-        teamName: this.newTeam
+        teamName: this.newTeam,
+        score: 0
       }
       this.teams.push(team)
       this.newTeam = ''
@@ -74,6 +86,9 @@ export default {
     },
     subtractPoint(index) {
       this.teams[index].score--
+    },
+    resetGame() {
+      this.teams.forEach(team => (team.score = 0))
     }
   }
 }

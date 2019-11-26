@@ -1,12 +1,18 @@
 <template>
   <div class="winner-modal">
     <h1>Congratulations!</h1>
+    <p>The {{ winningTeamName }} won the sports game!</p>
+    <b-button @click="resetGame">Reset Game</b-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Winner'
+  name: 'Winner',
+  props: {
+    resetGame: Function,
+    winningTeamName: String
+  }
 }
 </script>
 
