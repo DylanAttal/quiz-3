@@ -26,5 +26,11 @@ export default {
   z-index: 10;
   height: 350px;
   width: 550px;
+  border: 1px solid grey;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>

@@ -131,7 +131,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(200, 200, 200, 0.5);
+  background-color: rgba(200, 200, 200, 0.7);
   z-index: 9;
 }
 </style>
